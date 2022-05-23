@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/other_frame_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
+    android:padding="20dp"
+    tools:context=".fragments.OtherFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables,UselessParent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_us_text"
+            android:textColor="@color/white"
+            android:textSize="16pt" />
+
+        <ImageView
+            android:id="@+id/imageV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ic_gameiconred"
+            android:contentDescription="@string/demo_animation" />
+    </LinearLayout>
+
+</FrameLayout>

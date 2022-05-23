@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ic_home_icon"
+        android:icon="@drawable/home_selector"
+        android:title="@string/binary_search" />
+    <item
+        android:id="@+id/ic_game_icon"
+        android:icon="@drawable/game_selector"
+        android:title="@string/new_game" />
+    <item
+        android:id="@+id/ic_history_icon"
+        android:icon="@drawable/history_selector"
+        android:title="@string/full_history" />
+    <item
+        android:id="@+id/ic_other_icon"
+        android:icon="@drawable/other_selector"
+        android:title="@string/abouth_authors" />
+</menu>
