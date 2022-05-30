@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.itemIconTintList = null
 
         replaceFragment(HomeFragment())
+        //test comment for test do git works
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.ic_home_icon -> replaceFragment(HomeFragment())
