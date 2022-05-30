@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         bottom_navigation.itemIconTintList = null
 
+        //again broken pushing
         replaceFragment(HomeFragment())
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
