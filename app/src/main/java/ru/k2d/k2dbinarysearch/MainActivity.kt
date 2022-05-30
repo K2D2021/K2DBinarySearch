@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.itemIconTintList = null
 
         //again broken pushing
+        //and it not work...
         replaceFragment(HomeFragment())
         bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
