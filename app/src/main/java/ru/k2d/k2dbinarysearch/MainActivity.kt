@@ -14,11 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bottom_navigation.itemIconTintList = null
-        //NavigationBarView.itemIconTintList = null
 
         replaceFragment(HomeFragment())
-        bottom_navigation.setOnNavigationItemSelectedListener {
-            //NavigationBarView.OnItemReselectedListener{
+        bottom_navigation.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.ic_home_icon -> replaceFragment(HomeFragment())
                 R.id.ic_game_icon -> replaceFragment(GameFragment())
