@@ -52,5 +52,9 @@ class MainActivity : AppCompatActivity() {
             moveTaskToBack(true)
         }
     }
+
+    fun newWayToChangeFragment(){
+        bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
+    }
 }
 

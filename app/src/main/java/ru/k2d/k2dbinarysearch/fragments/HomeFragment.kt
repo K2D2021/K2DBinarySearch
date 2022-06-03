@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         buttonF.setOnClickListener {
             (activity as MainActivity).replaceFragment(GameFragment())
+            (activity as MainActivity).newWayToChangeFragment()
 
         }
 
