@@ -1,6 +1,7 @@
 package ru.k2d.k2dbinarysearch
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -12,6 +13,7 @@ import ru.k2d.k2dbinarysearch.fragments.OtherFragment
 
 
 class MainActivity : AppCompatActivity() {
+    private var myFragmentsStack = arrayListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,8 +42,9 @@ class MainActivity : AppCompatActivity() {
     fun replaceFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
-        transaction.addToBackStack("TAG")
+        transaction.addToBackStack(fragment.toString().substringBefore("Fragment"))
         transaction.commit()
+        myFragmentsStack += fragment.toString().substringBefore("Fragment")
     }
 
     override fun onBackPressed() {
@@ -51,10 +54,29 @@ class MainActivity : AppCompatActivity() {
         } else {
             moveTaskToBack(true)
         }
+        val f = manager.getBackStackEntryAt(manager.backStackEntryCount - 1).name
+        myFragmentsStack.remove(f)
+        paintSelectedTabOnBackPressed()
     }
 
-    fun newWayToChangeFragment(){
+    fun newWayToChangeFragment() {
         bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
+    }
+
+    private fun paintSelectedTabOnBackPressed() {
+        if (myFragmentsStack.size != 0) {
+            when (myFragmentsStack[myFragmentsStack.size - 1]) {
+                "History" -> bottom_navigation.menu.findItem(R.id.ic_history_icon).isChecked = true
+                "Game" -> bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
+                "Home" -> bottom_navigation.menu.findItem(R.id.ic_home_icon).isChecked = true
+                "Other" -> bottom_navigation.menu.findItem(R.id.ic_other_icon).isChecked = true
+                else -> Toast.makeText(
+                    this,
+                    "${myFragmentsStack[myFragmentsStack.size]} something wrong",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
     }
 }
 
