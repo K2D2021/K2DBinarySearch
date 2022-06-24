@@ -59,8 +59,19 @@ class MainActivity : AppCompatActivity() {
         paintSelectedTabOnBackPressed()
     }
 
-    fun newWayToChangeFragment() {
+    /*fun newWayToChangeFragment() {
         bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
+    }*/
+    fun newWayToChangeFragment(fragment: Fragment) {
+        when(fragment.toString().substringBefore("Fragment")){
+            "Game" -> bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
+            "History" -> bottom_navigation.menu.findItem(R.id.ic_history_icon).isChecked = true
+            else -> Toast.makeText(
+                this,
+                "${myFragmentsStack[myFragmentsStack.size]} something wrong",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun paintSelectedTabOnBackPressed() {

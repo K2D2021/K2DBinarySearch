@@ -49,15 +49,6 @@
             android:text="@string/clear_history"
             android:textAllCaps="false"
             android:textSize="12pt" />
-
-        <Button
-            android:id="@+id/buttonBackOrNewGame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/comfortaa_light"
-            android:text="@string/new_game"
-            android:textAllCaps="false"
-            android:textSize="12pt" />
     </LinearLayout>
 
 </FrameLayout>

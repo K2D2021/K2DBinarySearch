@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import ru.k2d.k2dbinarysearch.MainActivity
 import ru.k2d.k2dbinarysearch.R
 
-
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -17,14 +16,12 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     override fun onCreateView(
@@ -32,18 +29,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonF.setOnClickListener {
             (activity as MainActivity).replaceFragment(GameFragment())
-            (activity as MainActivity).newWayToChangeFragment()
-
+            (activity as MainActivity).newWayToChangeFragment(GameFragment())
         }
-
     }
-
-
 }

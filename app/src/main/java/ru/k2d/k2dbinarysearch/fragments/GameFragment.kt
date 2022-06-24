@@ -110,8 +110,8 @@ class GameFragment : Fragment() {
         }
         imageViewF.setOnClickListener {
             (activity as MainActivity).replaceFragment(HistoryFragment())
+            (activity as MainActivity).newWayToChangeFragment(HistoryFragment())
         }
-
     }
 
     private fun rcViewTest(getNumber: Int) {
@@ -132,5 +132,4 @@ class GameFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
     }
-
 }
