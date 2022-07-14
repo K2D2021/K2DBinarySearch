@@ -18,4 +18,11 @@ interface HistoryItemDAO {
 
     @Query("DELETE FROM ${DBHistoryItem.TABLE_NAME}")
     suspend fun deleteAllDBHistoryItems()
+
+    /*
+    Here was a problem with suspend
+    error: Not sure how to convert a Cursor to this method's return type (java.lang.Object)
+    Solution https://issuetracker.google.com/issues/236612358
+    Need to use 'androidx.room:room-ktx:2.5.0-alpha02'
+     */
 }

@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         myFragmentsStack += fragment.toString().substringBefore("Fragment")
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val manager: FragmentManager = supportFragmentManager
         if (manager.backStackEntryCount > 1) {
