@@ -8,7 +8,7 @@
     <string name="new_game">New game</string>
     <string name="clear_history">Clear history</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="is_it_that_number">Is it</string>
+    <string name="is_it_that_number">Is it </string>
     <string name="ok_attempt">OK. Attempt</string>
     <string name="be_better">failed. I will be better next time. Is it</string>
     <string name="o_no_it_is_attempt">O no! It is attempt</string>

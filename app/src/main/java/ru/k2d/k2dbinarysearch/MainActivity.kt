@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.k2d.k2dbinarysearch.data.AppDatabase
+import ru.k2d.k2dbinarysearch.data.DBHistoryItemRepositoryImpl
+import ru.k2d.k2dbinarysearch.data.HistoryItemRepository
 import ru.k2d.k2dbinarysearch.fragments.GameFragment
 import ru.k2d.k2dbinarysearch.fragments.HistoryFragment
 import ru.k2d.k2dbinarysearch.fragments.HomeFragment
@@ -13,9 +16,20 @@ import ru.k2d.k2dbinarysearch.fragments.OtherFragment
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var database: AppDatabase
+
+    lateinit var repository: HistoryItemRepository
+
     private var myFragmentsStack = arrayListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        database = AppDatabase.buildDatabase(applicationContext, DATABASE_NAME)
+
+        repository = DBHistoryItemRepositoryImpl(database.historyItemDAO())
+
+
         setContentView(R.layout.activity_main)
         bottom_navigation.itemIconTintList = null
 
@@ -89,6 +103,10 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
+    }
+
+    companion object{
+        private const val DATABASE_NAME = "k2d_bs_database.db"
     }
 }
 
