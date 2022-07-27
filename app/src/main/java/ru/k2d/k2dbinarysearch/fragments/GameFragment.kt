@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -93,7 +92,7 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
     }
 
     override fun onItemClicked(id: DBHistoryItemID) {
-        // TODO: delete this from parent 
+        // TODO: delete this from parent
     }
 
     private fun initRecyclerView() {
@@ -124,22 +123,22 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         }
     }
 
-    fun getFirstRandom(upperLimit: Int) = (0..upperLimit).random()
+    private fun getFirstRandom(upperLimit: Int) = (0..upperLimit).random()
 
-    fun isItThatNumber(guess: Int) = getString(R.string.is_it_that_number) + " " + guess + "?"
+    private fun isItThatNumber(guess: Int) = getString(R.string.is_it_that_number) + " " + guess + "?"
 
-    fun okAttempt(count: Int, isItThantNumberResult: String) =
+    private fun okAttempt(count: Int, isItThantNumberResult: String) =
         getString(R.string.ok_attempt) + " " + count + " " + getString(R.string.be_better) + " " + isItThantNumberResult
 
-    fun toMuchAttempts(count: Int) =
+    private fun toMuchAttempts(count: Int) =
         getString(R.string.o_no_it_is_attempt) + " " + count + getString(R.string.broke_something)
 
-    fun correctAnswer(guess: Int, count: Int) =
+    private fun correctAnswer(guess: Int, count: Int) =
         getString(R.string.i_knew_it_was) + " " + guess + getString(R.string.soft_human) + " " + count + " " + getString(
             R.string.tries_ha_ha
         )
 
-    fun changeStateButtonsExceptNewGame(state: Boolean = false) {
+    private fun changeStateButtonsExceptNewGame(state: Boolean = false) {
         buttonYesF.isClickable = state
         buttonYesF.isEnabled = state
         buttonLessF.isClickable = state
@@ -148,7 +147,7 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         buttonBigF.isEnabled = state
     }
 
-    fun checkAttemptCount(count: Int){
+    private fun checkAttemptCount(count: Int){
         if (count >= 21) {
             guestextF.text = toMuchAttempts(count)
             changeStateButtonsExceptNewGame()
