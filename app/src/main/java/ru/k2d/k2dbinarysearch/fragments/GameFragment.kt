@@ -12,8 +12,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.k2d.k2dbinarysearch.*
+import java.security.SecureRandom
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.concurrent.ThreadLocalRandom
+import kotlin.random.Random.Default.nextInt
 
 
 class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
@@ -123,9 +126,10 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         }
     }
 
-    private fun getFirstRandom(upperLimit: Int) = (0..upperLimit).random()
+    private fun getFirstRandom(upperLimit: Int) = SecureRandom().nextInt(upperLimit)
 
-    private fun isItThatNumber(guess: Int) = getString(R.string.is_it_that_number) + " " + guess + "?"
+    private fun isItThatNumber(guess: Int) =
+        getString(R.string.is_it_that_number) + " " + guess + "?"
 
     private fun okAttempt(count: Int, isItThantNumberResult: String) =
         getString(R.string.ok_attempt) + " " + count + " " + getString(R.string.be_better) + " " + isItThantNumberResult
@@ -147,7 +151,7 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         buttonBigF.isEnabled = state
     }
 
-    private fun checkAttemptCount(count: Int){
+    private fun checkAttemptCount(count: Int) {
         if (count >= 21) {
             guestextF.text = toMuchAttempts(count)
             changeStateButtonsExceptNewGame()
