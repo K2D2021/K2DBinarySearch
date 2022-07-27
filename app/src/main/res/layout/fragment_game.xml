@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:fontFamily="@font/comfortaa_light"
+            tools:text = "@string/it_is_empty"
             android:paddingHorizontal="3dp"
-            android:text="@string/it_is"
             android:textColor="@color/white"
             android:textSize="16pt" />
 

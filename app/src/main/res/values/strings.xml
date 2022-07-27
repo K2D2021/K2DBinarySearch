@@ -34,5 +34,6 @@
     <string name="about_authors">About authors</string>
     <string name="demo_animation">New game icon. Decoration element for demonstration animation</string>
     <string name="about_us_text">Hello i am new developer</string>
+    <string name="it_is_empty">There was a number. Something broke?</string>
 
 </resources>

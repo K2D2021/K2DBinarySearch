@@ -15,8 +15,6 @@ import ru.k2d.k2dbinarysearch.*
 import java.security.SecureRandom
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.concurrent.ThreadLocalRandom
-import kotlin.random.Random.Default.nextInt
 
 
 class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
@@ -102,7 +100,10 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         dbHistoryItemAdapter = DBHistoryItemAdapter(this)
 
         with(rcViewF) {
-            this.layoutManager = LinearLayoutManager(context)
+            val tryLayout = LinearLayoutManager(context)
+            tryLayout.reverseLayout = true
+            tryLayout.stackFromEnd = true
+            this.layoutManager = tryLayout
             this.adapter = dbHistoryItemAdapter
             this.setHasFixedSize(true)
         }
