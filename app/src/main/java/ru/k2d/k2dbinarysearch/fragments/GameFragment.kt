@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,24 +27,6 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
 
         return inflater.inflate(R.layout.fragment_game, container, false)
 
-        /*
-        val view = inflater.inflate(R.layout.fragment_game, container, false)
-
-        //view.recyclerView.layoutManager = LinearLayoutManager(activity)
-        view.rcViewF.layoutManager = LinearLayoutManager(activity)
-//        view.recyclerView.adapter = MainAdapter()
-        dbHistoryItemAdapter = DBHistoryItemAdapter(this)
-        view.rcViewF.adapter = dbHistoryItemAdapter
-
-        /*
-        this.layoutManager = LinearLayoutManager(context)
-            this.adapter = dbHistoryItemAdapter
-
-         */
-
-
-        return view*/
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,54 +39,26 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         var min = 0
         var max = x.size - 1
         var count = 1
-        var mid = (0..x.size).random() // var mid = (min + max)/2 original version
+        var mid = getFirstRandom(x.size) // var mid = (min + max)/2 original version
         var guess = x[mid]
 
-        //loadData()
-        val isItThatNumber = getString(R.string.is_it_that_number) + " " + guess + "?"
-        val okAttempt =
-            getString(R.string.ok_attempt) + count + getString(R.string.be_better) + isItThatNumber
-        val brokeSomething =
-            getString(R.string.o_no_it_is_attempt) + count + getString(R.string.broke_something)
-        val softHuman =
-            getString(R.string.i_knew_it_was) + guess + getString(R.string.soft_human) + count + getString(
-                R.string.tries_ha_ha
-            )
-//        guestextF.text = isItThatNumber
-        guestextF.text = guess.toString()
+
+        guestextF.text = isItThatNumber(guess)
         buttonLessF.setOnClickListener {
             max = mid - 1
             mid = (min + max) / 2
             guess = x[mid]
-            guestextF.text = okAttempt
-            if (count >= 21) {
-                guestextF.text = brokeSomething
-                buttonYesF.isClickable = false
-                buttonYesF.isEnabled = false
-                buttonLessF.isClickable = false
-                buttonLessF.isEnabled = false
-                buttonBigF.isClickable = false
-                buttonBigF.isEnabled = false
-            }
+            guestextF.text = okAttempt(count, isItThatNumber(guess))
+            checkAttemptCount(count)
             count++
         }
         buttonYesF.setOnClickListener {
-            guestextF.text = softHuman
-            //rcViewTest(guess)
-            buttonYesF.isClickable = false
-            buttonYesF.isEnabled = false
-            buttonLessF.isClickable = false
-            buttonLessF.isEnabled = false
-            buttonBigF.isClickable = false
-            buttonBigF.isEnabled = false
-//            saveData(
-//                LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yy   HH:mm:ss")),
-//                guess
-//            )
+            guestextF.text = correctAnswer(guess, count)
+            changeStateButtonsExceptNewGame()
             val dbHistoryItem = DBHistoryItem(
                 id = LocalDateTime.now().toString(),
-                dateText = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yy   HH:mm:ss")).toString(),
-                //guestedNumber = kotlin.random.Random.nextInt(10000..100000).toString(),
+                dateText = LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("dd.MM.yy   HH:mm:ss")).toString(),
                 guestedNumber = guess.toString(),
             )
             dbHistoryItemAdapter.addDBHistoryItem(dbHistoryItem)
@@ -116,16 +71,8 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
             min = mid + 1
             mid = (min + max) / 2
             guess = x[mid]
-            guestextF.text = okAttempt
-            if (count >= 25) {
-                guestextF.text = brokeSomething
-                buttonYesF.isClickable = false
-                buttonYesF.isEnabled = false
-                buttonLessF.isClickable = false
-                buttonLessF.isEnabled = false
-                buttonBigF.isClickable = false
-                buttonBigF.isEnabled = false
-            }
+            guestextF.text = okAttempt(count, isItThatNumber(guess))
+            checkAttemptCount(count)
             count++
         }
         buttonNewGameF.setOnClickListener {
@@ -134,13 +81,8 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
             count = 1
             mid = (0..x.size).random() // var mid = (min + max)/2 original version
             guess = x[mid]
-            guestextF.text = isItThatNumber
-            buttonYesF.isClickable = true
-            buttonYesF.isEnabled = true
-            buttonLessF.isClickable = true
-            buttonLessF.isEnabled = true
-            buttonBigF.isClickable = true
-            buttonBigF.isEnabled = true
+            guestextF.text = isItThatNumber(guess)
+            changeStateButtonsExceptNewGame(true)
         }
         imageViewF.setOnClickListener {
             (activity as MainActivity).replaceFragment(HistoryFragment())
@@ -151,16 +93,7 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
     }
 
     override fun onItemClicked(id: DBHistoryItemID) {
-        /*alertDialog = AlertDialog.Builder(this)
-            .setTitle("Delete Person")
-            .setMessage("Do you want to delete the person from the list")
-            .setPositiveButton("Yes") { dialog, _ ->
-                deletePersonById(id)
-                dialog.dismiss()
-            }.setNegativeButton("No") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()*/
+        // TODO: delete this from parent 
     }
 
     private fun initRecyclerView() {
@@ -183,33 +116,42 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
     private fun retrieveDBHistoryItems() {
         // Work on background thread
         lifecycleScope.launch(Dispatchers.IO) {
-           // val dbHistoryItems = (applicationContext as App).repository.getAllHistoryItems()
             val dbHistoryItems = (requireContext() as MainActivity).repository.getAllHistoryItems()
             // Work on main thread
-
             withContext(Dispatchers.Main) {
                 dbHistoryItemAdapter.setDBHistoryItems(dbHistoryItems)
             }
         }
     }
 
+    fun getFirstRandom(upperLimit: Int) = (0..upperLimit).random()
 
-//    private fun rcViewTest(getNumber: Int) {
-//        rcViewF.adapter = adapter
-//        adapter.addHisItem(getNumber) // it save numbr to list but at the moment it must save to shared pref and get it from shared pref
-//        adapter.notifyDataSetChanged()
-//    }
+    fun isItThatNumber(guess: Int) = getString(R.string.is_it_that_number) + " " + guess + "?"
 
-//    private fun saveData(date: String, value: Int) {
-//        val sharedPreference = SharedPreferences(requireContext())
-//        sharedPreference.save(date, value)
-//    }
+    fun okAttempt(count: Int, isItThantNumberResult: String) =
+        getString(R.string.ok_attempt) + " " + count + " " + getString(R.string.be_better) + " " + isItThantNumberResult
 
-//    private fun loadData() {
-//        val sharedPreference = SharedPreferences(requireContext())
-//        sharedPreference.getAllData()?.toSortedMap()?.forEach {
-//            adapter.addItemsOnStart(it.key, it.value as Int)
-//            adapter.notifyDataSetChanged()
-//        }
-//    }
+    fun toMuchAttempts(count: Int) =
+        getString(R.string.o_no_it_is_attempt) + " " + count + getString(R.string.broke_something)
+
+    fun correctAnswer(guess: Int, count: Int) =
+        getString(R.string.i_knew_it_was) + " " + guess + getString(R.string.soft_human) + " " + count + " " + getString(
+            R.string.tries_ha_ha
+        )
+
+    fun changeStateButtonsExceptNewGame(state: Boolean = false) {
+        buttonYesF.isClickable = state
+        buttonYesF.isEnabled = state
+        buttonLessF.isClickable = state
+        buttonLessF.isEnabled = state
+        buttonBigF.isClickable = state
+        buttonBigF.isEnabled = state
+    }
+
+    fun checkAttemptCount(count: Int){
+        if (count >= 21) {
+            guestextF.text = toMuchAttempts(count)
+            changeStateButtonsExceptNewGame()
+        }
+    }
 }
