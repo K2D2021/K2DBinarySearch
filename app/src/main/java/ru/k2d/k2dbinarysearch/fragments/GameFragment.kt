@@ -99,7 +99,7 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
     private fun initRecyclerView() {
         dbHistoryItemAdapter = DBHistoryItemAdapter(this)
 
-        with(rcViewF) {
+        with(recyclerViewGameFragment) {
             val tryLayout = LinearLayoutManager(context)
             tryLayout.reverseLayout = true
             tryLayout.stackFromEnd = true
