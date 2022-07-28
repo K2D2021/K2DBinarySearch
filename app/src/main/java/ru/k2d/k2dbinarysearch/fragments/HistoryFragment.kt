@@ -15,7 +15,6 @@ import ru.k2d.k2dbinarysearch.DBHistoryItemAdapter
 import ru.k2d.k2dbinarysearch.MainActivity
 import ru.k2d.k2dbinarysearch.R
 
-
 class HistoryFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
 
     private lateinit var dbHistoryItemAdapter: DBHistoryItemAdapter
@@ -32,6 +31,10 @@ class HistoryFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         initRecyclerView()
 
         super.onViewCreated(view, savedInstanceState)
+
+        buttonClearHistory.setOnClickListener {
+            deleteAllHistoryItems()
+        }
 
         retrieveDBHistoryItems()
     }
@@ -65,5 +68,13 @@ class HistoryFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         }
     }
 
-
+    private fun deleteAllHistoryItems() {
+        // Work on background thread
+        lifecycleScope.launch(Dispatchers.IO) {
+            (requireContext() as MainActivity).repository.deleteAll()
+            withContext(Dispatchers.Main) {
+                dbHistoryItemAdapter.deleteAllDBHistoryItems()
+            }
+        }
+    }
 }

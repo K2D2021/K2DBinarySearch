@@ -64,9 +64,8 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
             dbHistoryItemAdapter.addDBHistoryItem(dbHistoryItem)
 
             insertHistoryItem(dbHistoryItem)
-
-
         }
+
         buttonBigF.setOnClickListener {
             min = mid + 1
             mid = (min + max) / 2
@@ -75,6 +74,7 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
             checkAttemptCount(count)
             count++
         }
+
         buttonNewGameF.setOnClickListener {
             min = 0
             max = x.size - 1
@@ -84,6 +84,7 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
             guestextF.text = isItThatNumber(guess)
             changeStateButtonsExceptNewGame(true)
         }
+
         imageViewF.setOnClickListener {
             (activity as MainActivity).replaceFragment(HistoryFragment())
             (activity as MainActivity).newWayToChangeFragment(HistoryFragment())
