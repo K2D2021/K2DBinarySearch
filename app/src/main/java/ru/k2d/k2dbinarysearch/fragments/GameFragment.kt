@@ -17,7 +17,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
+class GameFragment : Fragment() {
 
     private lateinit var dbHistoryItemAdapter: DBHistoryItemAdapter
     override fun onCreateView(
@@ -93,12 +93,8 @@ class GameFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         retrieveDBHistoryItems()
     }
 
-    override fun onItemClicked(id: DBHistoryItemID) {
-        // TODO: delete this from parent
-    }
-
     private fun initRecyclerView() {
-        dbHistoryItemAdapter = DBHistoryItemAdapter(this)
+        dbHistoryItemAdapter = DBHistoryItemAdapter()
 
         with(recyclerViewGameFragment) {
             val tryLayout = LinearLayoutManager(context)

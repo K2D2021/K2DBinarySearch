@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class DBHistoryItemAdapter(private val itemClickListener: OnItemClickListener) :
+class DBHistoryItemAdapter :
     RecyclerView.Adapter<DBHistoryItemViewHolder>() {
 
     private val dbHistoryItemsList = mutableListOf<DBHistoryItem>()
@@ -24,15 +24,6 @@ class DBHistoryItemAdapter(private val itemClickListener: OnItemClickListener) :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun removeDBHistoryItem(id: String) {
-        val dbHistoryItemToRemove = dbHistoryItemsList.find { it.id == id }
-        dbHistoryItemToRemove?.let {
-            dbHistoryItemsList.remove(it)
-            notifyDataSetChanged()
-        }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
     fun deleteAllDBHistoryItems(){
         dbHistoryItemsList.clear()
         notifyDataSetChanged()
@@ -42,7 +33,7 @@ class DBHistoryItemAdapter(private val itemClickListener: OnItemClickListener) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DBHistoryItemViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_db_history, parent, false)
-        return DBHistoryItemViewHolder(itemView, itemClickListener)
+        return DBHistoryItemViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: DBHistoryItemViewHolder, position: Int) {
@@ -50,9 +41,5 @@ class DBHistoryItemAdapter(private val itemClickListener: OnItemClickListener) :
     }
 
     override fun getItemCount() = dbHistoryItemsList.size
-
-    interface OnItemClickListener {
-        fun onItemClicked(id: String)
-    }
 
 }

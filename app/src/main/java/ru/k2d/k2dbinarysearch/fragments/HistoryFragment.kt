@@ -15,7 +15,7 @@ import ru.k2d.k2dbinarysearch.DBHistoryItemAdapter
 import ru.k2d.k2dbinarysearch.MainActivity
 import ru.k2d.k2dbinarysearch.R
 
-class HistoryFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
+class HistoryFragment : Fragment() {
 
     private lateinit var dbHistoryItemAdapter: DBHistoryItemAdapter
 
@@ -39,13 +39,8 @@ class HistoryFragment : Fragment(), DBHistoryItemAdapter.OnItemClickListener {
         retrieveDBHistoryItems()
     }
 
-
-    override fun onItemClicked(id: String) {
-        TODO("Not yet implemented")
-    }
-
     private fun initRecyclerView() {
-        dbHistoryItemAdapter = DBHistoryItemAdapter(this)
+        dbHistoryItemAdapter = DBHistoryItemAdapter()
 
         with(rcView) {
             val tryLayout = LinearLayoutManager(context)
