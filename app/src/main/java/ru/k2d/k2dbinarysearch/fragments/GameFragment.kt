@@ -11,7 +11,10 @@ import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.k2d.k2dbinarysearch.*
+import ru.k2d.k2dbinarysearch.DBHistoryItem
+import ru.k2d.k2dbinarysearch.DBHistoryItemAdapter
+import ru.k2d.k2dbinarysearch.MainActivity
+import ru.k2d.k2dbinarysearch.R
 import java.security.SecureRandom
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -42,7 +45,6 @@ class GameFragment : Fragment() {
         var mid = getFirstRandom(x.size) // var mid = (min + max)/2 original version
         var guess = x[mid]
 
-
         guestextF.text = isItThatNumber(guess)
         buttonLessF.setOnClickListener {
             max = mid - 1
@@ -64,6 +66,7 @@ class GameFragment : Fragment() {
             dbHistoryItemAdapter.addDBHistoryItem(dbHistoryItem)
 
             insertHistoryItem(dbHistoryItem)
+            recyclerScrollToTop()
         }
 
         buttonBigF.setOnClickListener {
@@ -104,6 +107,7 @@ class GameFragment : Fragment() {
             this.adapter = dbHistoryItemAdapter
             this.setHasFixedSize(true)
         }
+
     }
 
     private fun insertHistoryItem(historyItem: DBHistoryItem) {
@@ -154,5 +158,12 @@ class GameFragment : Fragment() {
             guestextF.text = toMuchAttempts(count)
             changeStateButtonsExceptNewGame()
         }
+    }
+
+    private fun recyclerScrollToTop() {
+        (recyclerViewGameFragment.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+            dbHistoryItemAdapter.itemCount - 1,
+            0
+        )
     }
 }

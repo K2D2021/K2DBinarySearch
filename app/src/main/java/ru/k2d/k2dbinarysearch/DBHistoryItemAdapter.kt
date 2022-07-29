@@ -29,7 +29,6 @@ class DBHistoryItemAdapter :
         notifyDataSetChanged()
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DBHistoryItemViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_db_history, parent, false)
