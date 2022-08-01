@@ -19,5 +19,8 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <style name="RoundedCornerButton" parent="@style/Widget.AppCompat.Button.Colored">
+        <item name="background">@drawable/buttons_rounded_corners</item>
+    </style>
 
 </resources>

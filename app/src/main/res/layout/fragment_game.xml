@@ -13,8 +13,10 @@
         android:background="@color/nightDark"
         android:orientation="vertical"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp"
         android:paddingTop="10dp"
+        android:paddingRight="16dp"
+        android:divider="@drawable/separator"
+        android:showDividers="middle"
         tools:ignore="UselessParent">
 
         <TextView
@@ -29,6 +31,7 @@
 
         <Button
             android:id="@+id/buttonLessF"
+            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_light"
@@ -41,6 +44,7 @@
 
         <Button
             android:id="@+id/buttonBigF"
+            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_light"
@@ -53,6 +57,7 @@
 
         <Button
             android:id="@+id/buttonYesF"
+            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_light"
@@ -65,6 +70,7 @@
 
         <Button
             android:id="@+id/buttonNewGameF"
+            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_light"
@@ -118,8 +124,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewGameFragment" />
 
         </FrameLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 
 
 </FrameLayout>

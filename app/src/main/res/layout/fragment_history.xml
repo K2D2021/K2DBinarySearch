@@ -39,10 +39,12 @@
             android:id="@+id/rcView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingBottom="8dp"
             android:layout_weight="1" />
 
         <Button
             android:id="@+id/buttonClearHistory"
+            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/comfortaa_light"

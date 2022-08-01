@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">K2DBinarySearch</string>
     <string name="first_text">This is a simple app for demonstration how binary search works. Please imagine a number from zero to one million and this app try to ques it for 20 attempts or less.</string>
+    <string name="randomNumber_text">Or you can generate a random number and test the app on it</string>
     <string name="first_button">Lets play</string>
+    <string name="generateRandomNumberBTNText">Generate random</string>
     <string name="less">It less</string>
     <string name="it_is">It is</string>
     <string name="big">It bigger</string>
@@ -35,5 +37,7 @@
     <string name="demo_animation">New game icon. Decoration element for demonstration animation</string>
     <string name="about_us_text">Hello i am new developer</string>
     <string name="it_is_empty">There was a number. Something broke?</string>
+    <string name="app_guesses">App guesses</string>
+    <string name="you_guess">You guess</string>
 
 </resources>
