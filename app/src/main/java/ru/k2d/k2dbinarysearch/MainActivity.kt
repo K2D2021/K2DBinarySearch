@@ -1,10 +1,13 @@
 package ru.k2d.k2dbinarysearch
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.k2d.k2dbinarysearch.data.AppDatabase
 import ru.k2d.k2dbinarysearch.data.DBHistoryItemRepositoryImpl
@@ -13,11 +16,14 @@ import ru.k2d.k2dbinarysearch.fragments.GameFragment
 import ru.k2d.k2dbinarysearch.fragments.HistoryFragment
 import ru.k2d.k2dbinarysearch.fragments.HomeFragment
 import ru.k2d.k2dbinarysearch.fragments.OtherFragment
+import ru.k2d.k2dbinarysearch.repository.Repository
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var database: AppDatabase
+
+    private lateinit var viewModel: MainViewModel
 
     lateinit var repository: HistoryItemRepository
 
@@ -28,6 +34,15 @@ class MainActivity : AppCompatActivity() {
         database = AppDatabase.buildDatabase(applicationContext, DATABASE_NAME)
 
         repository = DBHistoryItemRepositoryImpl(database.historyItemDAO())
+
+        val retrofitRepository = Repository()
+        val viewModelFactory = MainViewModelFactory(retrofitRepository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.getPost()
+        viewModel.myResponse.observe(this, Observer { response ->
+            Log.d("Response", response.number.toString())
+
+        })
 
 
         setContentView(R.layout.activity_main)
