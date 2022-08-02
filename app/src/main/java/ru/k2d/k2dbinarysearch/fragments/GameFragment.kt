@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,7 @@ import java.time.format.DateTimeFormatter
 class GameFragment : Fragment() {
 
     private lateinit var dbHistoryItemAdapter: DBHistoryItemAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,7 +44,9 @@ class GameFragment : Fragment() {
         var min = 0
         var max = x.size - 1
         var count = 1
-        var mid = getFirstRandom(x.size) // var mid = (min + max)/2 original version
+        //var mid = getFirstRandom(x.size) // var mid = (min + max)/2 original version
+        var mid = (activity as MainActivity).getRandomViaRetrofit(x.size)
+        Toast.makeText(requireContext(), "$mid", Toast.LENGTH_SHORT).show()
         var guess = x[mid]
 
         guestextF.text = isItThatNumber(guess)
@@ -127,8 +131,6 @@ class GameFragment : Fragment() {
             }
         }
     }
-
-    private fun getFirstRandom(upperLimit: Int) = SecureRandom().nextInt(upperLimit)
 
     private fun isItThatNumber(guess: Int) =
         getString(R.string.is_it_that_number) + " " + guess + "?"

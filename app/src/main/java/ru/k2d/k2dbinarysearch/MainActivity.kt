@@ -17,6 +17,7 @@ import ru.k2d.k2dbinarysearch.fragments.HistoryFragment
 import ru.k2d.k2dbinarysearch.fragments.HomeFragment
 import ru.k2d.k2dbinarysearch.fragments.OtherFragment
 import ru.k2d.k2dbinarysearch.repository.Repository
+import java.security.SecureRandom
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,14 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         repository = DBHistoryItemRepositoryImpl(database.historyItemDAO())
 
-        val retrofitRepository = Repository()
-        val viewModelFactory = MainViewModelFactory(retrofitRepository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPost()
-        viewModel.myResponse.observe(this, Observer { response ->
-            Log.d("Response", response.number.toString())
 
-        })
 
 
         setContentView(R.layout.activity_main)
@@ -93,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
     }*/
     fun newWayToChangeFragment(fragment: Fragment) {
-        when(fragment.toString().substringBefore("Fragment")){
+        when (fragment.toString().substringBefore("Fragment")) {
             "Game" -> bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
             "History" -> bottom_navigation.menu.findItem(R.id.ic_history_icon).isChecked = true
             else -> Toast.makeText(
@@ -120,7 +114,41 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    companion object{
+    fun getRandomViaRetrofit(upperLimit: Int): Int {
+        val retrofitRepository = Repository()
+        val viewModelFactory = MainViewModelFactory(retrofitRepository)
+        var retrofitGeneratedRandom = 0
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.getPost()
+        viewModel.myResponse.observe(this, Observer { response ->
+            retrofitGeneratedRandom = if (response.isSuccessful) {
+                Log.d("Response", response.body()?.number.toString())
+//                response.body()?.number?.toInt()!!
+                convertRandomLongToInt(response.body()?.number!!)
+            } else {
+                Log.d("Response", "error here")
+                getFirstRandom(upperLimit)
+            }
+
+        })
+        return retrofitGeneratedRandom
+    }
+
+    //private fun getFirstRandom(upperLimit: Int) = SecureRandom().nextInt(upperLimit)
+    private fun getFirstRandom(upperLimit: Int) = 123
+
+    private fun convertRandomLongToInt(upperLimit: Long): Int {
+        if (upperLimit > 100000) {
+            var x = upperLimit.toString().substring(0,5).toInt()
+            Log.d("Response", ">1m")
+            Log.d("Response", x.toString())
+            return x
+        } else
+            Log.d("Response", "less one mil")
+            return upperLimit.toInt()
+    }
+
+    companion object {
         private const val DATABASE_NAME = "k2d_bs_database.db"
     }
 }
