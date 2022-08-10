@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import ru.k2d.k2dbinarysearch.DBHistoryItem
 import ru.k2d.k2dbinarysearch.DBHistoryItemAdapter
 import ru.k2d.k2dbinarysearch.MainActivity
 import ru.k2d.k2dbinarysearch.R
-import java.security.SecureRandom
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -35,7 +33,6 @@ class GameFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         initRecyclerView()
 
         super.onViewCreated(view, savedInstanceState)
@@ -44,12 +41,12 @@ class GameFragment : Fragment() {
         var min = 0
         var max = x.size - 1
         var count = 1
-        //var mid = getFirstRandom(x.size) // var mid = (min + max)/2 original version
-        var mid = (activity as MainActivity).getRandomViaRetrofit(x.size)
-        Toast.makeText(requireContext(), "$mid", Toast.LENGTH_SHORT).show()
+//        var mid = (activity as MainActivity).generateRandomNumberViaRetrofit(x.size)
+        var mid = 555
+        (activity as MainActivity).generateRandomNumberViaRetrofit(x.size)
         var guess = x[mid]
 
-        guestextF.text = isItThatNumber(guess)
+        //guestextF.text = isItThatNumber(guess)
         buttonLessF.setOnClickListener {
             max = mid - 1
             mid = (min + max) / 2
@@ -86,7 +83,7 @@ class GameFragment : Fragment() {
             min = 0
             max = x.size - 1
             count = 1
-            mid = (0..x.size).random() // var mid = (min + max)/2 original version
+            mid = (activity as MainActivity).generateRandomNumberViaRetrofit(x.size)
             guess = x[mid]
             guestextF.text = isItThatNumber(guess)
             changeStateButtonsExceptNewGame(true)

@@ -6,9 +6,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_game.*
+import ru.k2d.k2dbinarysearch.api.ApiInterface
+import ru.k2d.k2dbinarysearch.api.RetrofitClient
 import ru.k2d.k2dbinarysearch.data.AppDatabase
 import ru.k2d.k2dbinarysearch.data.DBHistoryItemRepositoryImpl
 import ru.k2d.k2dbinarysearch.data.HistoryItemRepository
@@ -16,15 +18,14 @@ import ru.k2d.k2dbinarysearch.fragments.GameFragment
 import ru.k2d.k2dbinarysearch.fragments.HistoryFragment
 import ru.k2d.k2dbinarysearch.fragments.HomeFragment
 import ru.k2d.k2dbinarysearch.fragments.OtherFragment
-import ru.k2d.k2dbinarysearch.repository.Repository
+import ru.k2d.k2dbinarysearch.models.retrofitRandomNumber
 import java.security.SecureRandom
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var database: AppDatabase
-
-    private lateinit var viewModel: MainViewModel
 
     lateinit var repository: HistoryItemRepository
 
@@ -83,9 +84,6 @@ class MainActivity : AppCompatActivity() {
         paintSelectedTabOnBackPressed()
     }
 
-    /*fun newWayToChangeFragment() {
-        bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
-    }*/
     fun newWayToChangeFragment(fragment: Fragment) {
         when (fragment.toString().substringBefore("Fragment")) {
             "Game" -> bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
@@ -114,42 +112,45 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getRandomViaRetrofit(upperLimit: Int): Int {
-        val retrofitRepository = Repository()
-        val viewModelFactory = MainViewModelFactory(retrofitRepository)
-        var retrofitGeneratedRandom = 0
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPost()
-        viewModel.myResponse.observe(this, Observer { response ->
-            retrofitGeneratedRandom = if (response.isSuccessful) {
-                Log.d("Response", response.body()?.number.toString())
-//                response.body()?.number?.toInt()!!
-                convertRandomLongToInt(response.body()?.number!!)
-            } else {
-                Log.d("Response", "error here")
-                getFirstRandom(upperLimit)
-            }
-
-        })
-        return retrofitGeneratedRandom
-    }
-
-    //private fun getFirstRandom(upperLimit: Int) = SecureRandom().nextInt(upperLimit)
-    private fun getFirstRandom(upperLimit: Int) = 123
-
-    private fun convertRandomLongToInt(upperLimit: Long): Int {
-        if (upperLimit > 100000) {
-            var x = upperLimit.toString().substring(0,5).toInt()
-            Log.d("Response", ">1m")
-            Log.d("Response", x.toString())
-            return x
-        } else
-            Log.d("Response", "less one mil")
-            return upperLimit.toInt()
-    }
+    fun getFirstRandom(upperLimit: Int) = SecureRandom().nextInt(upperLimit)
 
     companion object {
         private const val DATABASE_NAME = "k2d_bs_database.db"
     }
+
+    private fun convertRandomLongToInt(inputRandomNumber: Long): Int {
+        if (inputRandomNumber > 100000) return inputRandomNumber.toString().substring(0, 5).toInt()
+        return inputRandomNumber.toInt()
+    }
+
+
+
+    fun generateRandomNumberViaRetrofit(upperLimit: Int): Int {
+
+        val retrofit = RetrofitClient.getInstance()
+        val apiInterface = retrofit.create(ApiInterface::class.java)
+        var randomNumber = 777
+
+        lifecycleScope.launchWhenCreated {
+            try {
+                val response = apiInterface.getRandomNumberRetro()
+                if (response.isSuccessful) {
+                    //txtData.text = response.body()?.joke.toString()
+//                    Toast.makeText(this@MainActivity, response.body()?.number.toString(), Toast.LENGTH_SHORT).show()
+                   /* randomNumber = response.body()?.let { convertRandomLongToInt(it.number) }
+                        ?: getFirstRandom(upperLimit)*/
+                    /*Toast.makeText(this@MainActivity, randomNumber.toString(), Toast.LENGTH_SHORT)
+                        .show()*/
+                    guestextF.text = convertRandomLongToInt(response.body()?.number!!).toString()
+                } else {
+                    randomNumber = getFirstRandom(upperLimit)
+                }
+            } catch (Ex: Exception) {
+                Log.e("Error", Ex.localizedMessage)
+            }
+        }
+        return randomNumber
+    }
+
 }
 

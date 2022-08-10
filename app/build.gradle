@@ -38,8 +38,11 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
+    }
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -47,9 +50,9 @@ dependencies {
     def nav_version = "2.5.0"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-    implementation"androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
-    androidTestImplementation"androidx.navigation:navigation-testing:$nav_version"
-    implementation"androidx.navigation:navigation-compose:$nav_version"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    implementation "androidx.navigation:navigation-compose:$nav_version"
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -93,5 +96,5 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
-    implementation'com.squareup.okhttp3:okhttp:4.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
 }
