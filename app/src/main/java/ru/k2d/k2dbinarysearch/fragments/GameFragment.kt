@@ -41,12 +41,10 @@ class GameFragment : Fragment() {
         var min = 0
         var max = x.size - 1
         var count = 1
-//        var mid = (activity as MainActivity).generateRandomNumberViaRetrofit(x.size)
-        var mid = 555
-        (activity as MainActivity).generateRandomNumberViaRetrofit(x.size)
+        var mid = (activity as MainActivity).getFirstRandom(x.size)
         var guess = x[mid]
 
-        //guestextF.text = isItThatNumber(guess)
+        guestextF.text = isItThatNumber(guess)
         buttonLessF.setOnClickListener {
             max = mid - 1
             mid = (min + max) / 2
@@ -83,7 +81,7 @@ class GameFragment : Fragment() {
             min = 0
             max = x.size - 1
             count = 1
-            mid = (activity as MainActivity).generateRandomNumberViaRetrofit(x.size)
+            mid = (activity as MainActivity).getFirstRandom(x.size)
             guess = x[mid]
             guestextF.text = isItThatNumber(guess)
             changeStateButtonsExceptNewGame(true)

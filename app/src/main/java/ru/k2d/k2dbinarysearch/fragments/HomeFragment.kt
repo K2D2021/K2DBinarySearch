@@ -20,9 +20,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         buttonF.setOnClickListener {
             (activity as MainActivity).replaceFragment(GameFragment())
             (activity as MainActivity).newWayToChangeFragment(GameFragment())
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).introductionTextWithRetrofit()
     }
 }

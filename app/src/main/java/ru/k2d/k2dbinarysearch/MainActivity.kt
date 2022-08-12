@@ -1,14 +1,13 @@
 package ru.k2d.k2dbinarysearch
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_game.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import ru.k2d.k2dbinarysearch.api.ApiInterface
 import ru.k2d.k2dbinarysearch.api.RetrofitClient
 import ru.k2d.k2dbinarysearch.data.AppDatabase
@@ -18,9 +17,7 @@ import ru.k2d.k2dbinarysearch.fragments.GameFragment
 import ru.k2d.k2dbinarysearch.fragments.HistoryFragment
 import ru.k2d.k2dbinarysearch.fragments.HomeFragment
 import ru.k2d.k2dbinarysearch.fragments.OtherFragment
-import ru.k2d.k2dbinarysearch.models.retrofitRandomNumber
 import java.security.SecureRandom
-import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,9 +33,6 @@ class MainActivity : AppCompatActivity() {
         database = AppDatabase.buildDatabase(applicationContext, DATABASE_NAME)
 
         repository = DBHistoryItemRepositoryImpl(database.historyItemDAO())
-
-
-
 
         setContentView(R.layout.activity_main)
         bottom_navigation.itemIconTintList = null
@@ -112,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getFirstRandom(upperLimit: Int) = SecureRandom().nextInt(upperLimit)
+    fun getFirstRandom(upperLimit: Int = 100000) = SecureRandom().nextInt(upperLimit)
 
     companion object {
         private const val DATABASE_NAME = "k2d_bs_database.db"
@@ -124,32 +118,31 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    fun generateRandomNumberViaRetrofit(upperLimit: Int): Int {
-
+    fun introductionTextWithRetrofit() {
         val retrofit = RetrofitClient.getInstance()
         val apiInterface = retrofit.create(ApiInterface::class.java)
-        var randomNumber = 777
 
         lifecycleScope.launchWhenCreated {
             try {
                 val response = apiInterface.getRandomNumberRetro()
                 if (response.isSuccessful) {
-                    //txtData.text = response.body()?.joke.toString()
-//                    Toast.makeText(this@MainActivity, response.body()?.number.toString(), Toast.LENGTH_SHORT).show()
-                   /* randomNumber = response.body()?.let { convertRandomLongToInt(it.number) }
-                        ?: getFirstRandom(upperLimit)*/
-                    /*Toast.makeText(this@MainActivity, randomNumber.toString(), Toast.LENGTH_SHORT)
-                        .show()*/
-                    guestextF.text = convertRandomLongToInt(response.body()?.number!!).toString()
+
+//                    textView3.text = convertRandomLongToInt(response.body()?.number!!).toString()
+                    firstTextPlusRandom(convertRandomLongToInt(response.body()?.number!!))
+//                    Toast.makeText(this@MainActivity, "${bredNumber.toString()} $temp", Toast.LENGTH_SHORT).show()
                 } else {
-                    randomNumber = getFirstRandom(upperLimit)
+//                    textView3.text = getFirstRandom().toString()
+                    firstTextPlusRandom(getFirstRandom())
                 }
             } catch (Ex: Exception) {
-                Log.e("Error", Ex.localizedMessage)
+//                textView3.text = getFirstRandom().toString()
+                    firstTextPlusRandom(getFirstRandom())
             }
         }
-        return randomNumber
+    }
+
+    private fun firstTextPlusRandom(inputRandomNumber: Int){
+        retrofitText.text = getString(R.string.randomNumber_text) + " " + inputRandomNumber.toString()
     }
 
 }
