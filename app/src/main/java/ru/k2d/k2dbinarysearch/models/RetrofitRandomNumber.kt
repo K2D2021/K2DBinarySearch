@@ -1,5 +1,5 @@
 package ru.k2d.k2dbinarysearch.models
 
-data class retrofitRandomNumber(
+data class RetrofitRandomNumber(
     var number: Long
 )

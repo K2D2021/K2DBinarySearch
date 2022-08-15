@@ -1,13 +1,13 @@
 package ru.k2d.k2dbinarysearch
 
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import ru.k2d.k2dbinarysearch.api.ApiInterface
 import ru.k2d.k2dbinarysearch.api.RetrofitClient
 import ru.k2d.k2dbinarysearch.data.AppDatabase
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun introductionTextWithRetrofit() {
+    fun introductionTextWithRetrofit(retrofitText: TextView) {
         val retrofit = RetrofitClient.getInstance()
         val apiInterface = retrofit.create(ApiInterface::class.java)
 
@@ -127,21 +127,17 @@ class MainActivity : AppCompatActivity() {
                 val response = apiInterface.getRandomNumberRetro()
                 if (response.isSuccessful) {
 
-//                    textView3.text = convertRandomLongToInt(response.body()?.number!!).toString()
-                    firstTextPlusRandom(convertRandomLongToInt(response.body()?.number!!))
-//                    Toast.makeText(this@MainActivity, "${bredNumber.toString()} $temp", Toast.LENGTH_SHORT).show()
+                    firstTextPlusRandom(convertRandomLongToInt(response.body()?.number!!), retrofitText)
                 } else {
-//                    textView3.text = getFirstRandom().toString()
-                    firstTextPlusRandom(getFirstRandom())
+                    firstTextPlusRandom(getFirstRandom(), retrofitText)
                 }
             } catch (Ex: Exception) {
-//                textView3.text = getFirstRandom().toString()
-                    firstTextPlusRandom(getFirstRandom())
+                    firstTextPlusRandom(getFirstRandom(), retrofitText)
             }
         }
     }
 
-    private fun firstTextPlusRandom(inputRandomNumber: Int){
+    private fun firstTextPlusRandom(inputRandomNumber: Int, retrofitText: TextView){
         retrofitText.text = getString(R.string.randomNumber_text) + " " + inputRandomNumber.toString()
     }
 
