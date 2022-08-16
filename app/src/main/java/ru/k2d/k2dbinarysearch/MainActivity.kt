@@ -138,8 +138,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun firstTextPlusRandom(inputRandomNumber: Int, retrofitText: TextView){
-        retrofitText.text = getString(R.string.randomNumber_text) + " " + inputRandomNumber.toString()
+            retrofitText.text = getString(R.string.randomNumber_text) + " " + inputRandomNumber.toString()
     }
 
 }
-
