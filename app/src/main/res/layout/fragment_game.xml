@@ -22,7 +22,8 @@
         <TextView
             android:id="@+id/guestextF"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:fontFamily="@font/comfortaa_light"
             android:paddingHorizontal="3dp"
             android:textColor="@color/white"
@@ -103,8 +104,9 @@
         </LinearLayout>
 
         <FrameLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewGameFragment"
