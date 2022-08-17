@@ -120,7 +120,7 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/shadow_effect"
                 android:clickable="true"
-                android:contentDescription="@string/todo"
+                android:contentDescription="@string/recycler_shadow_effect"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerViewGameFragment" />
 
         </FrameLayout>

@@ -15,12 +15,14 @@
     <string name="i_knew_it_was">I knew it was</string>
     <string name="is_it_that_number">Is it</string>
     <string name="it_is">It is</string>
+    <string name="it_is_empty">Is it 1000000?</string>
     <string name="less">It less</string>
     <string name="new_game">New game</string>
     <string name="number">Number</string>
     <string name="o_no_it_is_attempt">O no! It is attempt</string>
     <string name="ok_attempt">OK. Attempt</string>
     <string name="randomNumber_text">You can try guess</string>
+    <string name="recycler_shadow_effect">Recycler shadow effect</string>
     <string name="soft_human">! You soft human! Ha! Only</string>
     <string name="todo">TODO</string>
     <string name="tries_ha_ha">tries! Ha! Ha! Ha!</string>
