@@ -26,6 +26,8 @@ class OtherFragment : Fragment() {
         imageV = view.findViewById(R.id.imageV)
         val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.round_and_round)
         imageV.startAnimation(animation)
+
+
         other_fragment = view.findViewById(R.id.other_frame_background)
         val AnimationDrawable: AnimationDrawable = other_fragment.background as AnimationDrawable
         AnimationDrawable.setEnterFadeDuration(1500)
