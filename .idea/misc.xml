@@ -8,15 +8,35 @@
         <entry key="..\:/Users/K2D/AndroidStudioProjects/K2DBinarySearch/app/src/main/res/drawable/game_selector.xml" value="0.3385" />
         <entry key="..\:/Users/K2D/AndroidStudioProjects/K2DBinarySearch/app/src/main/res/drawable/other_selector.xml" value="0.3385" />
         <entry key="..\:/Users/K2D/AndroidStudioProjects/K2DBinarySearch/app/src/main/res/menu/menu.xml" value="0.371875" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/achiev_selector.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/background_1.xml" value="0.3325" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/buttons_rounded_corners.xml" value="0.2985" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/game_selector.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/gradient_list.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/history_selector.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/home_selector.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_achieviconred.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_achieviconwhites3.xml" value="0.3325" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_game_icon_red.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_gameiconwhite.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_historyiconred.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_historyiconwhite.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_homeiconred.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_homeiconwhites3.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_homeiconwhites4.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_homeiconwhites5.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_othericonred.xml" value="0.3325" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/ic_othericonwhite.xml" value="0.3325" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/k2dbsicons2_background.xml" value="0.332" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/other_selector.xml" value="0.3325" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/separator.xml" value="0.2985" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/shadow_effect.xml" value="0.3325" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/sp_screen.xml" value="0.332" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/splashscreen.xml" value="0.332" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/splashscreen_logo_background.xml" value="0.332" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/thumb.xml" value="0.2985" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/drawable/track.xml" value="0.2985" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/font/comfortaa_light.xml" value="0.40208333333333335" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/layout/fragment_game.xml" value="0.358695652173913" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/layout/fragment_history.xml" value="0.33" />
@@ -27,6 +47,7 @@
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/layout/screen_logo_splash.xml" value="0.371875" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/menu/menu.xml" value="0.371875" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/mipmap-anydpi-v26/k2dbsicons2.xml" value="0.332" />
+        <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/mipmap-anydpi-v26/k2dbsicons2_round.xml" value="0.3325" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/mipmap-anydpi-v26/sp_screen.xml" value="0.1995" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearch/app/src/main/res/mipmap-anydpi-v26/splashscreen_logo.xml" value="0.332" />
         <entry key="..\:/Users/K2D/StudioProjects/K2DBinarySearchTEST/app/src/main/res/drawable/splashscreen.xml" value="0.2985" />
