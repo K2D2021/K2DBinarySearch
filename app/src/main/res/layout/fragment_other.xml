@@ -16,13 +16,16 @@
         android:paddingRight="16dp">
 
         <TextView
+            app:layout_constraintHeight_percent="0.75"
+            app:autoSizeTextType="uniform"
+            app:autoSizePresetSizes="@array/auto_size_text_sizes"
             android:id="@+id/textView5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:fontFamily="@font/comfortaa_light"
             android:text="@string/about_us_text"
             android:textColor="@color/white"
-            android:textSize="15pt"
+            android:textSize="17sp"
             app:layout_constraintTop_toTopOf="parent" />
 
 

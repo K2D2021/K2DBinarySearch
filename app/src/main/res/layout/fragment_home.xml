@@ -14,33 +14,37 @@
         android:paddingRight="16dp">
 
         <TextView
+            app:layout_constraintHeight_percent="0.65"
+            app:autoSizeTextType="uniform"
+            app:autoSizePresetSizes="@array/auto_size_text_sizes"
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:fontFamily="@font/comfortaa_light"
             android:text="@string/first_text"
             android:textColor="@color/white"
-            android:textSize="15pt"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            app:layout_constraintHeight_percent="0.2"
+            app:autoSizeTextType="uniform"
+            app:autoSizePresetSizes="@array/auto_size_text_sizes"
             android:id="@+id/retrofitText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:fontFamily="@font/comfortaa_light"
             tools:text="@string/youCanTryGuess"
             android:textColor="@color/white"
-            android:textSize="15pt"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
         <Button
             android:id="@+id/buttonF"
             android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:fontFamily="@font/comfortaa_light"
             android:text="@string/first_button"
             android:textAllCaps="false"
-            android:textSize="12pt"
+            android:textSize="15sp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent" />
 
