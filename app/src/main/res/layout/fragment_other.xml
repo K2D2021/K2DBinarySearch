@@ -25,7 +25,6 @@
             android:fontFamily="@font/comfortaa_light"
             android:text="@string/about_us_text"
             android:textColor="@color/white"
-            android:textSize="17sp"
             app:layout_constraintTop_toTopOf="parent" />
 
 

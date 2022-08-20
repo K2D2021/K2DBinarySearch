@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun introductionTextWithRetrofit(retrofitText: TextView) {
+    fun introductionTextWithRetrofit(textView3: TextView) {
         val retrofit = RetrofitClient.getInstance()
         val apiInterface = retrofit.create(ApiInterface::class.java)
 
@@ -127,18 +127,18 @@ class MainActivity : AppCompatActivity() {
                 val response = apiInterface.getRandomNumberRetro()
                 if (response.isSuccessful) {
 
-                    firstTextPlusRandom(convertRandomLongToInt(response.body()?.number!!), retrofitText)
+                    firstTextPlusRandom(convertRandomLongToInt(response.body()?.number!!), textView3)
                 } else {
-                    firstTextPlusRandom(getFirstRandom(), retrofitText)
+                    firstTextPlusRandom(getFirstRandom(), textView3)
                 }
             } catch (Ex: Exception) {
-                    firstTextPlusRandom(getFirstRandom(), retrofitText)
+                    firstTextPlusRandom(getFirstRandom(), textView3)
             }
         }
     }
 
-    private fun firstTextPlusRandom(inputRandomNumber: Int, retrofitText: TextView){
-            retrofitText.text = getString(R.string.randomNumber_text) + " " + inputRandomNumber.toString()
+    private fun firstTextPlusRandom(inputRandomNumber: Int, textView3: TextView){
+        textView3.text = getString(R.string.first_text) + " " + inputRandomNumber.toString()
     }
 
 }

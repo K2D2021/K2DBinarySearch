@@ -10,7 +10,7 @@
     <string name="date">Date</string>
     <string name="demo_animation">New game icon. Decoration element for demonstration animation</string>
     <string name="first_button">Lets play</string>
-    <string name="first_text">This is a simple app for demonstration how binary search works. Please imagine a number from zero to one million and this app try to ques it for 20 attempts or less.</string>
+    <string name="first_text">This is a simple app for demonstration how binary search works. Please imagine a number from zero to one million and this app try to ques it for 20 attempts or less.\nYou can try guess </string>
     <string name="full_history">Full history</string>
     <string name="i_knew_it_was">I knew it was</string>
     <string name="is_it_that_number">Is it</string>
@@ -21,10 +21,8 @@
     <string name="number">Number</string>
     <string name="o_no_it_is_attempt">O no! It is attempt</string>
     <string name="ok_attempt">OK. Attempt</string>
-    <string name="randomNumber_text">You can try guess</string>
     <string name="recycler_shadow_effect">Recycler shadow effect</string>
     <string name="soft_human">! You soft human! Ha! Only</string>
     <string name="todo">TODO</string>
     <string name="tries_ha_ha">tries! Ha! Ha! Ha!</string>
-    <string name="youCanTryGuess">You can try guess 100000</string>
 </resources>

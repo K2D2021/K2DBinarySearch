@@ -29,7 +29,6 @@
             android:fontFamily="@font/comfortaa_light"
             android:paddingHorizontal="3dp"
             android:textColor="@color/white"
-            android:textSize="17sp"
             tools:text="@string/it_is_empty" />
 
         <Button
