@@ -19,13 +19,12 @@
             android:layout_height="0dp"
             android:fontFamily="@font/comfortaa_light"
             android:text="@string/first_text"
-            tools:text="@string/first_text"
             android:textColor="@color/white"
             app:autoSizePresetSizes="@array/auto_size_text_sizes"
             app:autoSizeTextType="uniform"
             app:layout_constraintHeight_percent="0.82"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/first_text" />
 
 
         <Button
@@ -35,6 +34,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/buttons_rounded_corners"
             android:fontFamily="@font/comfortaa_light"
+            android:paddingTop="5dp"
             android:text="@string/first_button"
             android:textAllCaps="false"
             android:textSize="15sp"

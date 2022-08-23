@@ -11,17 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/nightDark"
+        android:divider="@drawable/separator"
         android:orientation="vertical"
         android:paddingLeft="16dp"
         android:paddingTop="10dp"
         android:paddingRight="16dp"
-        android:divider="@drawable/separator"
         android:showDividers="middle"
         tools:ignore="UselessParent">
 
         <TextView
-            app:autoSizeTextType="uniform"
-            app:autoSizePresetSizes="@array/auto_size_text_sizes"
             android:id="@+id/guestextF"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -29,14 +27,17 @@
             android:fontFamily="@font/comfortaa_light"
             android:paddingHorizontal="3dp"
             android:textColor="@color/white"
+            app:autoSizePresetSizes="@array/auto_size_text_sizes"
+            app:autoSizeTextType="uniform"
             tools:text="@string/it_is_empty" />
 
         <Button
             android:id="@+id/buttonLessF"
-            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttons_rounded_corners"
             android:fontFamily="@font/comfortaa_light"
+            android:paddingTop="5dp"
             android:text="@string/less"
             android:textAllCaps="false"
             android:textSize="15sp"
@@ -46,10 +47,11 @@
 
         <Button
             android:id="@+id/buttonBigF"
-            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttons_rounded_corners"
             android:fontFamily="@font/comfortaa_light"
+            android:paddingTop="5dp"
             android:text="@string/big"
             android:textAllCaps="false"
             android:textSize="15sp"
@@ -59,10 +61,11 @@
 
         <Button
             android:id="@+id/buttonYesF"
-            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttons_rounded_corners"
             android:fontFamily="@font/comfortaa_light"
+            android:paddingTop="5dp"
             android:text="@string/it_is"
             android:textAllCaps="false"
             android:textSize="15sp"
@@ -72,10 +75,11 @@
 
         <Button
             android:id="@+id/buttonNewGameF"
-            android:background="@drawable/buttons_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttons_rounded_corners"
             android:fontFamily="@font/comfortaa_light"
+            android:paddingTop="5dp"
             android:text="@string/new_game"
             android:textAllCaps="false"
             android:textSize="15sp"
@@ -105,9 +109,9 @@
         </LinearLayout>
 
         <FrameLayout
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewGameFragment"
