@@ -2,8 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@color/nightDark" />
     <item>
-        <bitmap android:src="@drawable/sp_screen_image"
+        <bitmap
             android:gravity="center_horizontal"
-             />
+            android:src="@drawable/sp_screen_image" />
     </item>
 </layer-list>

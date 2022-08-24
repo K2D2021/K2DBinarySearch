@@ -1,5 +1,6 @@
 package ru.k2d.k2dbinarysearch
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -137,6 +138,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun firstTextPlusRandom(inputRandomNumber: Int, textView3: TextView){
         textView3.text = getString(R.string.first_text) + " " + inputRandomNumber.toString()
     }

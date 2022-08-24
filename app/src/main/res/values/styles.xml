@@ -22,5 +22,4 @@
     <style name="RoundedCornerButton" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="background">@drawable/buttons_rounded_corners</item>
     </style>
-
 </resources>
