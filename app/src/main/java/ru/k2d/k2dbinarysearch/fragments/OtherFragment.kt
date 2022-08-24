@@ -24,7 +24,7 @@ class OtherFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         imageV = view.findViewById(R.id.imageV)
-        val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.round_and_round)
+        val animation = AnimationUtils.loadAnimation(requireContext(), R.anim.new_game_icon_animation_move_left_to_right)
         imageV.startAnimation(animation)
 
 

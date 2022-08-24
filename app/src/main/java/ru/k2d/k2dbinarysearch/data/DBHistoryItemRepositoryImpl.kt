@@ -3,7 +3,8 @@ package ru.k2d.k2dbinarysearch.data
 import ru.k2d.k2dbinarysearch.DBHistoryItem
 import ru.k2d.k2dbinarysearch.DBHistoryItemID
 
-class DBHistoryItemRepositoryImpl(private val dbHistoryItemDAO: HistoryItemDAO) : HistoryItemRepository {
+class DBHistoryItemRepositoryImpl(private val dbHistoryItemDAO: HistoryItemDAO) :
+    HistoryItemRepository {
     override suspend fun insert(dbHistoryItem: DBHistoryItem) {
         dbHistoryItemDAO.insert(dbHistoryItem)
     }
