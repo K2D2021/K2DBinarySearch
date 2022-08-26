@@ -11,13 +11,8 @@ class DBHistoryItemViewHolder(
     fun bind(dbHistoryItem: DBHistoryItem) {
         with(itemView) {
             dbHistoryItem.run {
-                //nameTextView.text = id
                 dateTextView.text = dateText
-                descriptionTextView.text = guestedNumber
-
-                /*deleteItemImageView.setOnClickListener {
-                    itemClickListener.onItemClicked(id = id)
-                }*/
+                numberTextView.text = guestedNumber
             }
         }
     }

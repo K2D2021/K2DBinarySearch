@@ -37,24 +37,24 @@ class GameFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        val x = IntArray(1000001) { it }
-        var min = 0
-        var max = x.size - 1
-        var count = 1
-        var mid = (activity as MainActivity).getFirstRandom(x.size)
-        var guess = x[mid]
+        val baseSortedArray = IntArray(1000001) { it }
+        var leftBorder = 0
+        var rightBorder = baseSortedArray.size - 1
+        var attemptsCounter = 1
+        var middlePosition = (activity as MainActivity).getFirstRandom(baseSortedArray.size)
+        var guess = baseSortedArray[middlePosition]
 
-        guestextF.text = isItThatNumber(guess)
-        buttonLessF.setOnClickListener {
-            max = mid - 1
-            mid = (min + max) / 2
-            guess = x[mid]
-            guestextF.text = okAttempt(count, isItThatNumber(guess))
-            checkAttemptCount(count)
-            count++
+        gameFragmentTopText.text = isItThatNumber(guess)
+        buttonItLess.setOnClickListener {
+            rightBorder = middlePosition - 1
+            middlePosition = (leftBorder + rightBorder) / 2
+            guess = baseSortedArray[middlePosition]
+            gameFragmentTopText.text = okAttempt(attemptsCounter, isItThatNumber(guess))
+            checkAttemptCount(attemptsCounter)
+            attemptsCounter++
         }
-        buttonYesF.setOnClickListener {
-            guestextF.text = correctAnswer(guess, count)
+        buttonItIs.setOnClickListener {
+            gameFragmentTopText.text = correctAnswer(guess, attemptsCounter)
             changeStateButtonsExceptNewGame()
             val dbHistoryItem = DBHistoryItem(
                 id = LocalDateTime.now().toString(),
@@ -68,26 +68,26 @@ class GameFragment : Fragment() {
             recyclerScrollToTop()
         }
 
-        buttonBigF.setOnClickListener {
-            min = mid + 1
-            mid = (min + max) / 2
-            guess = x[mid]
-            guestextF.text = okAttempt(count, isItThatNumber(guess))
-            checkAttemptCount(count)
-            count++
+        buttonItBigger.setOnClickListener {
+            leftBorder = middlePosition + 1
+            middlePosition = (leftBorder + rightBorder) / 2
+            guess = baseSortedArray[middlePosition]
+            gameFragmentTopText.text = okAttempt(attemptsCounter, isItThatNumber(guess))
+            checkAttemptCount(attemptsCounter)
+            attemptsCounter++
         }
 
-        buttonNewGameF.setOnClickListener {
-            min = 0
-            max = x.size - 1
-            count = 1
-            mid = (activity as MainActivity).getFirstRandom(x.size)
-            guess = x[mid]
-            guestextF.text = isItThatNumber(guess)
+        buttonNewGame.setOnClickListener {
+            leftBorder = 0
+            rightBorder = baseSortedArray.size - 1
+            attemptsCounter = 1
+            middlePosition = (activity as MainActivity).getFirstRandom(baseSortedArray.size)
+            guess = baseSortedArray[middlePosition]
+            gameFragmentTopText.text = isItThatNumber(guess)
             changeStateButtonsExceptNewGame(true)
         }
 
-        imageViewF.setOnClickListener {
+        historyOverlayImageShadowEffect.setOnClickListener {
             (activity as MainActivity).replaceFragment(HistoryFragment())
             (activity as MainActivity).newWayToChangeFragment(HistoryFragment())
         }
@@ -110,17 +110,14 @@ class GameFragment : Fragment() {
     }
 
     private fun insertHistoryItem(historyItem: DBHistoryItem) {
-        // Work on background thread
         lifecycleScope.launch(Dispatchers.IO) {
             (requireContext() as MainActivity).repository.insert(dbHistoryItem = historyItem)
         }
     }
 
     private fun retrieveDBHistoryItems() {
-        // Work on background thread
         lifecycleScope.launch(Dispatchers.IO) {
             val dbHistoryItems = (requireContext() as MainActivity).repository.getAllHistoryItems()
-            // Work on main thread
             withContext(Dispatchers.Main) {
                 dbHistoryItemAdapter.setDBHistoryItems(dbHistoryItems)
             }
@@ -142,17 +139,17 @@ class GameFragment : Fragment() {
         )
 
     private fun changeStateButtonsExceptNewGame(state: Boolean = false) {
-        buttonYesF.isClickable = state
-        buttonYesF.isEnabled = state
-        buttonLessF.isClickable = state
-        buttonLessF.isEnabled = state
-        buttonBigF.isClickable = state
-        buttonBigF.isEnabled = state
+        buttonItIs.isClickable = state
+        buttonItIs.isEnabled = state
+        buttonItLess.isClickable = state
+        buttonItLess.isEnabled = state
+        buttonItBigger.isClickable = state
+        buttonItBigger.isEnabled = state
     }
 
     private fun checkAttemptCount(count: Int) {
         if (count >= 21) {
-            guestextF.text = toMuchAttempts(count)
+            gameFragmentTopText.text = toMuchAttempts(count)
             changeStateButtonsExceptNewGame()
         }
     }

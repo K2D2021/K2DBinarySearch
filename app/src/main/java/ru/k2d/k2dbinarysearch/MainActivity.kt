@@ -17,7 +17,7 @@ import ru.k2d.k2dbinarysearch.data.HistoryItemRepository
 import ru.k2d.k2dbinarysearch.fragments.GameFragment
 import ru.k2d.k2dbinarysearch.fragments.HistoryFragment
 import ru.k2d.k2dbinarysearch.fragments.HomeFragment
-import ru.k2d.k2dbinarysearch.fragments.OtherFragment
+import ru.k2d.k2dbinarysearch.fragments.AboutAuthors
 import java.security.SecureRandom
 
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_home_icon -> replaceFragment(HomeFragment())
                 R.id.ic_game_icon -> replaceFragment(GameFragment())
                 R.id.ic_history_icon -> replaceFragment(HistoryFragment())
-                R.id.ic_other_icon -> replaceFragment(OtherFragment())
+                R.id.ic_about_authors_icon -> replaceFragment(AboutAuthors())
             }
             true
         }
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_home_icon -> replaceFragment(HomeFragment())
                 R.id.ic_game_icon -> replaceFragment(GameFragment())
                 R.id.ic_history_icon -> replaceFragment(HistoryFragment())
-                R.id.ic_other_icon -> replaceFragment(OtherFragment())
+                R.id.ic_about_authors_icon -> replaceFragment(AboutAuthors())
             }
         }
     }
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                 "History" -> bottom_navigation.menu.findItem(R.id.ic_history_icon).isChecked = true
                 "Game" -> bottom_navigation.menu.findItem(R.id.ic_game_icon).isChecked = true
                 "Home" -> bottom_navigation.menu.findItem(R.id.ic_home_icon).isChecked = true
-                "Other" -> bottom_navigation.menu.findItem(R.id.ic_other_icon).isChecked = true
+                "Other" -> bottom_navigation.menu.findItem(R.id.ic_about_authors_icon).isChecked = true
                 else -> Toast.makeText(
                     this,
                     "${myFragmentsStack[myFragmentsStack.size]} something wrong",
@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun introductionTextWithRetrofit(textView3: TextView) {
+    fun introductionTextWithRetrofit(textHomeFragment: TextView) {
         val retrofit = RetrofitClient.getInstance()
         val apiInterface = retrofit.create(ApiInterface::class.java)
 
@@ -128,19 +128,19 @@ class MainActivity : AppCompatActivity() {
                 val response = apiInterface.getRandomNumberRetro()
                 if (response.isSuccessful) {
 
-                    firstTextPlusRandom(convertRandomLongToInt(response.body()?.number!!), textView3)
+                    firstTextPlusRandom(convertRandomLongToInt(response.body()?.number!!), textHomeFragment)
                 } else {
-                    firstTextPlusRandom(getFirstRandom(), textView3)
+                    firstTextPlusRandom(getFirstRandom(), textHomeFragment)
                 }
             } catch (Ex: Exception) {
-                    firstTextPlusRandom(getFirstRandom(), textView3)
+                    firstTextPlusRandom(getFirstRandom(), textHomeFragment)
             }
         }
     }
 
     @SuppressLint("SetTextI18n")
-    private fun firstTextPlusRandom(inputRandomNumber: Int, textView3: TextView){
-        textView3.text = getString(R.string.first_text) + " " + inputRandomNumber.toString()
+    private fun firstTextPlusRandom(inputRandomNumber: Int, textHomeFragment: TextView){
+        textHomeFragment.text = getString(R.string.first_text) + " " + inputRandomNumber.toString()
     }
 
 }

@@ -21,14 +21,14 @@
             android:paddingHorizontal="4dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/recyclerDateColumn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/date" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/recyclerNumberColumn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -36,7 +36,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcView"
+            android:id="@+id/historyFragmentRecycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

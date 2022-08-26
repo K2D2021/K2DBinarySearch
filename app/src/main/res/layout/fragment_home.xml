@@ -14,7 +14,7 @@
         android:paddingRight="16dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/homeFragmentText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fontFamily="@font/comfortaa_light"
@@ -28,7 +28,7 @@
 
 
         <Button
-            android:id="@+id/buttonF"
+            android:id="@+id/buttonLetsPlay"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="16dp"

@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonF.setOnClickListener {
+        buttonLetsPlay.setOnClickListener {
             (activity as MainActivity).replaceFragment(GameFragment())
             (activity as MainActivity).newWayToChangeFragment(GameFragment())
         }
@@ -29,6 +29,6 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).introductionTextWithRetrofit(textView3)
+        (activity as MainActivity).introductionTextWithRetrofit(homeFragmentText)
     }
 }

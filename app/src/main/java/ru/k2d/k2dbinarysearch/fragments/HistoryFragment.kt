@@ -42,7 +42,7 @@ class HistoryFragment : Fragment() {
     private fun initRecyclerView() {
         dbHistoryItemAdapter = DBHistoryItemAdapter()
 
-        with(rcView) {
+        with(historyFragmentRecycler) {
             val tryLayout = LinearLayoutManager(context)
             tryLayout.reverseLayout = true
             tryLayout.stackFromEnd = true
@@ -53,10 +53,8 @@ class HistoryFragment : Fragment() {
     }
 
     private fun retrieveDBHistoryItems() {
-        // Work on background thread
         lifecycleScope.launch(Dispatchers.IO) {
             val dbHistoryItems = (requireContext() as MainActivity).repository.getAllHistoryItems()
-            // Work on main thread
             withContext(Dispatchers.Main) {
                 dbHistoryItemAdapter.setDBHistoryItems(dbHistoryItems)
             }
@@ -64,7 +62,6 @@ class HistoryFragment : Fragment() {
     }
 
     private fun deleteAllHistoryItems() {
-        // Work on background thread
         lifecycleScope.launch(Dispatchers.IO) {
             (requireContext() as MainActivity).repository.deleteAll()
             withContext(Dispatchers.Main) {

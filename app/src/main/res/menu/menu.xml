@@ -13,7 +13,7 @@
         android:icon="@drawable/history_selector"
         android:title="@string/full_history" />
     <item
-        android:id="@+id/ic_other_icon"
-        android:icon="@drawable/other_selector"
+        android:id="@+id/ic_about_authors_icon"
+        android:icon="@drawable/about_authors_selector"
         android:title="@string/about_authors" />
 </menu>
