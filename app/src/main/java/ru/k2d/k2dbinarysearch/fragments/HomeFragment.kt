@@ -5,23 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_home.*
 import ru.k2d.k2dbinarysearch.MainActivity
-import ru.k2d.k2dbinarysearch.R
+import ru.k2d.k2dbinarysearch.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+
+    private var binding: FragmentHomeBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonLetsPlay.setOnClickListener {
+        binding?.buttonLetsPlay?.setOnClickListener {
             (activity as MainActivity).replaceFragment(GameFragment())
             (activity as MainActivity).newWayToChangeFragment(GameFragment())
         }
@@ -29,6 +31,6 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).introductionTextWithRetrofit(homeFragmentText)
+        binding?.let { (activity as MainActivity).introductionTextWithRetrofit(it.homeFragmentText) }
     }
 }

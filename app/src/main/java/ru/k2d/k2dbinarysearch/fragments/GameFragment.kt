@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,6 +14,7 @@ import ru.k2d.k2dbinarysearch.DBHistoryItem
 import ru.k2d.k2dbinarysearch.DBHistoryItemAdapter
 import ru.k2d.k2dbinarysearch.MainActivity
 import ru.k2d.k2dbinarysearch.R
+import ru.k2d.k2dbinarysearch.databinding.FragmentGameBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -23,13 +23,14 @@ class GameFragment : Fragment() {
 
     private lateinit var dbHistoryItemAdapter: DBHistoryItemAdapter
 
+    private var binding: FragmentGameBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        return inflater.inflate(R.layout.fragment_game, container, false)
-
+    ): View {
+        binding = FragmentGameBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,17 +45,17 @@ class GameFragment : Fragment() {
         var middlePosition = (activity as MainActivity).getFirstRandom(baseSortedArray.size)
         var guess = baseSortedArray[middlePosition]
 
-        gameFragmentTopText.text = isItThatNumber(guess)
-        buttonItLess.setOnClickListener {
+        binding?.gameFragmentTopText?.text = isItThatNumber(guess)
+        binding?.buttonItLess?.setOnClickListener {
             rightBorder = middlePosition - 1
             middlePosition = (leftBorder + rightBorder) / 2
             guess = baseSortedArray[middlePosition]
-            gameFragmentTopText.text = okAttempt(attemptsCounter, isItThatNumber(guess))
+            binding?.gameFragmentTopText?.text = okAttempt(attemptsCounter, isItThatNumber(guess))
             checkAttemptCount(attemptsCounter)
             attemptsCounter++
         }
-        buttonItIs.setOnClickListener {
-            gameFragmentTopText.text = correctAnswer(guess, attemptsCounter)
+        binding?.buttonItIs?.setOnClickListener {
+            binding?.gameFragmentTopText?.text = correctAnswer(guess, attemptsCounter)
             changeStateButtonsExceptNewGame()
             val dbHistoryItem = DBHistoryItem(
                 id = LocalDateTime.now().toString(),
@@ -68,26 +69,26 @@ class GameFragment : Fragment() {
             recyclerScrollToTop()
         }
 
-        buttonItBigger.setOnClickListener {
+        binding?.buttonItBigger?.setOnClickListener {
             leftBorder = middlePosition + 1
             middlePosition = (leftBorder + rightBorder) / 2
             guess = baseSortedArray[middlePosition]
-            gameFragmentTopText.text = okAttempt(attemptsCounter, isItThatNumber(guess))
+            binding?.gameFragmentTopText?.text = okAttempt(attemptsCounter, isItThatNumber(guess))
             checkAttemptCount(attemptsCounter)
             attemptsCounter++
         }
 
-        buttonNewGame.setOnClickListener {
+        binding?.buttonNewGame?.setOnClickListener {
             leftBorder = 0
             rightBorder = baseSortedArray.size - 1
             attemptsCounter = 1
             middlePosition = (activity as MainActivity).getFirstRandom(baseSortedArray.size)
             guess = baseSortedArray[middlePosition]
-            gameFragmentTopText.text = isItThatNumber(guess)
+            binding?.gameFragmentTopText?.text = isItThatNumber(guess)
             changeStateButtonsExceptNewGame(true)
         }
 
-        historyOverlayImageShadowEffect.setOnClickListener {
+        binding?.historyOverlayImageShadowEffect?.setOnClickListener {
             (activity as MainActivity).replaceFragment(HistoryFragment())
             (activity as MainActivity).newWayToChangeFragment(HistoryFragment())
         }
@@ -98,13 +99,13 @@ class GameFragment : Fragment() {
     private fun initRecyclerView() {
         dbHistoryItemAdapter = DBHistoryItemAdapter()
 
-        with(recyclerViewGameFragment) {
+        with(binding?.recyclerViewGameFragment) {
             val tryLayout = LinearLayoutManager(context)
             tryLayout.reverseLayout = true
             tryLayout.stackFromEnd = true
-            this.layoutManager = tryLayout
-            this.adapter = dbHistoryItemAdapter
-            this.setHasFixedSize(true)
+            this?.layoutManager = tryLayout
+            this?.adapter = dbHistoryItemAdapter
+            this?.setHasFixedSize(true)
         }
 
     }
@@ -139,23 +140,23 @@ class GameFragment : Fragment() {
         )
 
     private fun changeStateButtonsExceptNewGame(state: Boolean = false) {
-        buttonItIs.isClickable = state
-        buttonItIs.isEnabled = state
-        buttonItLess.isClickable = state
-        buttonItLess.isEnabled = state
-        buttonItBigger.isClickable = state
-        buttonItBigger.isEnabled = state
+        binding?.buttonItIs?.isClickable = state
+        binding?.buttonItIs?.isEnabled = state
+        binding?.buttonItLess?.isClickable = state
+        binding?.buttonItLess?.isEnabled = state
+        binding?.buttonItBigger?.isClickable = state
+        binding?.buttonItBigger?.isEnabled = state
     }
 
     private fun checkAttemptCount(count: Int) {
         if (count >= 21) {
-            gameFragmentTopText.text = toMuchAttempts(count)
+            binding?.gameFragmentTopText?.text = toMuchAttempts(count)
             changeStateButtonsExceptNewGame()
         }
     }
 
     private fun recyclerScrollToTop() {
-        (recyclerViewGameFragment.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
+        (binding?.recyclerViewGameFragment?.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(
             dbHistoryItemAdapter.itemCount - 1,
             0
         )

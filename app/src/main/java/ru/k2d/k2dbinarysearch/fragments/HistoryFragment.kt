@@ -7,23 +7,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_history.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.k2d.k2dbinarysearch.DBHistoryItemAdapter
 import ru.k2d.k2dbinarysearch.MainActivity
-import ru.k2d.k2dbinarysearch.R
+import ru.k2d.k2dbinarysearch.databinding.FragmentHistoryBinding
 
 class HistoryFragment : Fragment() {
 
     private lateinit var dbHistoryItemAdapter: DBHistoryItemAdapter
 
+    private var binding: FragmentHistoryBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_history, container, false)
+    ): View {
+        binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,7 +34,7 @@ class HistoryFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        buttonClearHistory.setOnClickListener {
+        binding?.buttonClearHistory?.setOnClickListener {
             deleteAllHistoryItems()
         }
 
@@ -42,13 +44,13 @@ class HistoryFragment : Fragment() {
     private fun initRecyclerView() {
         dbHistoryItemAdapter = DBHistoryItemAdapter()
 
-        with(historyFragmentRecycler) {
+        with(binding?.historyFragmentRecycler) {
             val tryLayout = LinearLayoutManager(context)
             tryLayout.reverseLayout = true
             tryLayout.stackFromEnd = true
-            this.layoutManager = tryLayout
-            this.adapter = dbHistoryItemAdapter
-            this.setHasFixedSize(true)
+            this?.layoutManager = tryLayout
+            this?.adapter = dbHistoryItemAdapter
+            this?.setHasFixedSize(true)
         }
     }
 
