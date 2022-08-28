@@ -1,8 +1,8 @@
 package ru.k2d.k2dbinarysearch
 
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_db_history.view.*
 
 class DBHistoryItemViewHolder(
     itemView: View
@@ -11,6 +11,8 @@ class DBHistoryItemViewHolder(
     fun bind(dbHistoryItem: DBHistoryItem) {
         with(itemView) {
             dbHistoryItem.run {
+                val dateTextView = findViewById<TextView>(R.id.dateTextView)
+                val numberTextView = findViewById<TextView>(R.id.numberTextView)
                 dateTextView.text = dateText
                 numberTextView.text = guestedNumber
             }
