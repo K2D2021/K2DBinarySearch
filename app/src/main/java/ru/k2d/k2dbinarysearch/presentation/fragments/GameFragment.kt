@@ -1,4 +1,4 @@
-package ru.k2d.k2dbinarysearch.fragments
+package ru.k2d.k2dbinarysearch.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.k2d.k2dbinarysearch.DBHistoryItem
-import ru.k2d.k2dbinarysearch.DBHistoryItemAdapter
-import ru.k2d.k2dbinarysearch.MainActivity
+import ru.k2d.k2dbinarysearch.data.models.DBHistoryItem
+import ru.k2d.k2dbinarysearch.domain.DBHistoryItemAdapter
+import ru.k2d.k2dbinarysearch.presentation.MainActivity
 import ru.k2d.k2dbinarysearch.R
 import ru.k2d.k2dbinarysearch.databinding.FragmentGameBinding
 import java.time.LocalDateTime

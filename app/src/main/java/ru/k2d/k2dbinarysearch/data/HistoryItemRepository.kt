@@ -1,7 +1,7 @@
 package ru.k2d.k2dbinarysearch.data
 
 
-import ru.k2d.k2dbinarysearch.DBHistoryItem
+import ru.k2d.k2dbinarysearch.data.models.DBHistoryItem
 import ru.k2d.k2dbinarysearch.DBHistoryItemID
 
 interface HistoryItemRepository {

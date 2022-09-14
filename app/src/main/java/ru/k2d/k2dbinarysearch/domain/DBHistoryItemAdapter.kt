@@ -1,9 +1,12 @@
-package ru.k2d.k2dbinarysearch
+package ru.k2d.k2dbinarysearch.domain
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.k2d.k2dbinarysearch.presentation.DBHistoryItemViewHolder
+import ru.k2d.k2dbinarysearch.R
+import ru.k2d.k2dbinarysearch.data.models.DBHistoryItem
 
 class DBHistoryItemAdapter :
     RecyclerView.Adapter<DBHistoryItemViewHolder>() {

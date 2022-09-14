@@ -1,8 +1,8 @@
-package ru.k2d.k2dbinarysearch
+package ru.k2d.k2dbinarysearch.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import ru.k2d.k2dbinarysearch.DBHistoryItem.Companion.TABLE_NAME
+import ru.k2d.k2dbinarysearch.data.models.DBHistoryItem.Companion.TABLE_NAME
 
 @Entity(
     tableName = TABLE_NAME

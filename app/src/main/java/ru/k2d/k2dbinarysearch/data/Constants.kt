@@ -1,4 +1,4 @@
-package ru.k2d.k2dbinarysearch.utils
+package ru.k2d.k2dbinarysearch.data
 
 class Constants {
 

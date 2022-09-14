@@ -1,4 +1,4 @@
-package ru.k2d.k2dbinarysearch
+package ru.k2d.k2dbinarysearch.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,16 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
-import ru.k2d.k2dbinarysearch.api.ApiInterface
-import ru.k2d.k2dbinarysearch.api.RetrofitClient
+import ru.k2d.k2dbinarysearch.R
+import ru.k2d.k2dbinarysearch.domain.ApiInterface
+import ru.k2d.k2dbinarysearch.domain.RetrofitClient
 import ru.k2d.k2dbinarysearch.data.AppDatabase
 import ru.k2d.k2dbinarysearch.data.DBHistoryItemRepositoryImpl
 import ru.k2d.k2dbinarysearch.data.HistoryItemRepository
 import ru.k2d.k2dbinarysearch.databinding.ActivityMainBinding
-import ru.k2d.k2dbinarysearch.fragments.GameFragment
-import ru.k2d.k2dbinarysearch.fragments.HistoryFragment
-import ru.k2d.k2dbinarysearch.fragments.HomeFragment
-import ru.k2d.k2dbinarysearch.fragments.AboutAuthors
+import ru.k2d.k2dbinarysearch.presentation.fragments.GameFragment
+import ru.k2d.k2dbinarysearch.presentation.fragments.HistoryFragment
+import ru.k2d.k2dbinarysearch.presentation.fragments.HomeFragment
+import ru.k2d.k2dbinarysearch.presentation.fragments.AboutAuthors
 import java.security.SecureRandom
 
 

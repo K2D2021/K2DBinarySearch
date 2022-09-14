@@ -1,8 +1,8 @@
-package ru.k2d.k2dbinarysearch.api
+package ru.k2d.k2dbinarysearch.domain
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.k2d.k2dbinarysearch.utils.Constants.Companion.BASE_URL
+import ru.k2d.k2dbinarysearch.data.Constants.Companion.BASE_URL
 
 object RetrofitClient {
     fun getInstance(): Retrofit {

@@ -3,7 +3,7 @@ package ru.k2d.k2dbinarysearch.data
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import ru.k2d.k2dbinarysearch.DBHistoryItem
+import ru.k2d.k2dbinarysearch.data.models.DBHistoryItem
 
 @Dao
 interface HistoryItemDAO {

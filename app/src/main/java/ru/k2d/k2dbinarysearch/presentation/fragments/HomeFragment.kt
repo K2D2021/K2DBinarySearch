@@ -1,11 +1,11 @@
-package ru.k2d.k2dbinarysearch.fragments
+package ru.k2d.k2dbinarysearch.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ru.k2d.k2dbinarysearch.MainActivity
+import ru.k2d.k2dbinarysearch.presentation.MainActivity
 import ru.k2d.k2dbinarysearch.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

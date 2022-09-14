@@ -1,4 +1,4 @@
-package ru.k2d.k2dbinarysearch.fragments
+package ru.k2d.k2dbinarysearch.presentation.fragments
 
 import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle

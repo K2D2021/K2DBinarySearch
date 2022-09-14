@@ -1,4 +1,4 @@
-package ru.k2d.k2dbinarysearch
+package ru.k2d.k2dbinarysearch.presentation
 
 import android.annotation.SuppressLint
 import android.content.Intent
