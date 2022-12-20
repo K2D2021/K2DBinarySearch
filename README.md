@@ -38,19 +38,23 @@ When a regular random number generator is used, one may encounter a situation of
 
 
 ### Very nice menu
+Beautiful and understandable icons are specially designed for this application.
 
 
 ### Database (ROOM) for results
+ROOM database for storing game results with the possibility of complete cleaning
 
 
 ### Double animation
+An unobtrusive animated background and a catchy foreground element
 
 
 ### Beautiful icon
+Especially for this application, an icon has been developed in the same style with this application and the icons of my other applications.
 
 
 ### Mysterious splashscreen
-
+Deep and mysterious splash screen at the loading stage
 
 
 
