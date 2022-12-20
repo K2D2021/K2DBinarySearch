@@ -20,15 +20,21 @@ This application was created to demonstrate how binary search works. The main id
 - [Mysterious splashscreen](#)
 
 ### Minimalistic design
+Beautiful and elegant design, without unnecessary elements.
 
 
 ### Getting a random number via API
+Retrofit2 was used to get a random number through the API of a third-party resource.
 
 
 ### Offline random number generation
+If the Internet is unavailable, the application automatically uses the built-in random number generator.
 
 
 ### Non repeating random numbers
+When a regular random number generator is used, one may encounter a situation of repeated numbers. With the help of the code below, it was possible to bypass this limitation.
+
+```fun getFirstRandom(upperLimit: Int = 100000) = SecureRandom().nextInt(upperLimit)```
 
 
 ### Very nice menu
