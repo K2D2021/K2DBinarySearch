@@ -14,7 +14,7 @@ This application was created to demonstrate how binary search works. The main id
 - [Offline random number generation](#offline-random-number-generation)
 - [Non repeating random numbers](#non-repeating-random-numbers)
 - [Very nice menu](#very-nice-menu)
-- [Database (ROOM) for results](#database-\(room\)-for-results)
+- [ROOM database for results](#room-database-for-results)
 - [Double animation](#double-animation)
 - [Beautiful icon](#beautiful-icon)
 - [Mysterious splashscreen](#mysterious-splashscreen)
@@ -56,7 +56,7 @@ Beautiful and understandable icons are specially designed for this application.
 
 
 
-### Database (ROOM) for results
+### ROOM database for results
 ROOM database for storing game results with the possibility of complete cleaning
 
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosROOM.gif">
