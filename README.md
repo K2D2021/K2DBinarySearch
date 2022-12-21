@@ -14,7 +14,7 @@ This application was created to demonstrate how binary search works. The main id
 - [Offline random number generation](#offline-random-number-generation)
 - [Non repeating random numbers](#non-repeating-random-numbers)
 - [Very nice menu](#very-nice-menu)
-- [Database (ROOM) for results](#database-(room)-for-results)
+- [Database (ROOM) for results](#database-\(room\)-for-results)
 - [Double animation](#double-animation)
 - [Beautiful icon](#beautiful-icon)
 - [Mysterious splashscreen](#mysterious-splashscreen)
