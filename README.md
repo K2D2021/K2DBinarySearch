@@ -73,9 +73,14 @@ An unobtrusive animated background and a catchy foreground element
 ### Beautiful icon
 Especially for this application, an icon has been developed in the same style with this application and the icons of my other applications.
 
+<img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchIcon.jpg">
+
+
 
 ### Mysterious splashscreen
 Deep and mysterious splash screen at the loading stage
+
+<img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchSplashScreen.jpg">
 
 
 
