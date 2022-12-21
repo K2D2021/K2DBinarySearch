@@ -2,22 +2,22 @@
 Mobile application to demonstrate how binary search works.
 
 - [Description](#description)
-- [Technologies](#technology)
-- [Project stats](#project_stats)
+- [Technologies](#technologies)
+- [Project stats](#project-stats)
 
 # Description
 This application was created to demonstrate how binary search works. The main idea of binary search is to get a sorted array of numbers as input. Pick an average (or random). If we guessed correctly, then success, otherwise we specify whether the guessed number is more or less than the one found? And as a result, instead of the full length of the array, we now need to perform another search in the remaining half. Due to binary search, the search itself is very fast (On²).
 
 ## Features
-- [Minimalistic design](#minimalistic_design)
-- [Getting a random number via API](#getting_a_random_number_via_api)
-- [Offline random number generation](#offline_random_number_generation)
-- [Non repeating random numbers](#non_repeating_random_numbers)
-- [Very nice menu](#very_nice_menu)
-- [Database (ROOM) for results](#database_(room)_for_results)
-- [Double animation](#double_animation)
-- [Beautiful icon](#beautiful_icon)
-- [Mysterious splashscreen](#mysterious_splashscreen)
+- [Minimalistic design](#minimalistic-design)
+- [Getting a random number via API](#getting-a-random-number-via-api)
+- [Offline random number generation](#offline-random-number-generation)
+- [Non repeating random numbers](#non-repeating-random-numbers)
+- [Very nice menu](#very-nice-menu)
+- [Database (ROOM) for results](#database-(room)-for-results)
+- [Double animation](#double-animation)
+- [Beautiful icon](#beautiful-icon)
+- [Mysterious splashscreen](#mysterious-splashscreen)
 
 ### Minimalistic design
 Beautiful and elegant design, without unnecessary elements.
