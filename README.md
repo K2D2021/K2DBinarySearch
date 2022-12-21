@@ -25,16 +25,19 @@ Beautiful and elegant design, without unnecessary elements.
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosDesign.gif">
 
 
+
 ### Getting a random number via API
 Retrofit2 was used to get a random number through the API of a third-party resource.
 
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosAPI.gif">
 
 
+
 ### Offline random number generation
 If the Internet is unavailable, the application automatically uses the built-in random number generator.
 
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosOffline.gif">
+
 
 
 ### Non repeating random numbers
@@ -45,10 +48,12 @@ When a regular random number generator is used, one may encounter a situation of
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosTrueRandom.gif">
 
 
+
 ### Very nice menu
 Beautiful and understandable icons are specially designed for this application.
 
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosMenu.gif">
+
 
 
 ### Database (ROOM) for results
@@ -57,10 +62,12 @@ ROOM database for storing game results with the possibility of complete cleaning
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosROOM.gif">
 
 
+
 ### Double animation
 An unobtrusive animated background and a catchy foreground element
 
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchVideosAnimation.gif">
+
 
 
 ### Beautiful icon
