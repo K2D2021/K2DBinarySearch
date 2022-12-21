@@ -10,14 +10,14 @@ This application was created to demonstrate how binary search works. The main id
 
 ## Features
 - [Minimalistic design](#minimalistic_design)
-- [Getting a random number via API](#)
-- [Offline random number generation](#)
-- [Non repeating random numbers](#)
-- [Very nice menu](#)
-- [Database (ROOM) for results](#)
-- [Double animation](#)
-- [Beautiful icon](#)
-- [Mysterious splashscreen](#)
+- [Getting a random number via API](#getting_a_random_number_via_api)
+- [Offline random number generation](#offline_random_number_generation)
+- [Non repeating random numbers](#non_repeating_random_numbers)
+- [Very nice menu](#very_nice_menu)
+- [Database (ROOM) for results](#database_(room)_for_results)
+- [Double animation](#double_animation)
+- [Beautiful icon](#beautiful_icon)
+- [Mysterious splashscreen](#mysterious_splashscreen)
 
 ### Minimalistic design
 Beautiful and elegant design, without unnecessary elements.
