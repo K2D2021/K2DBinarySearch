@@ -93,8 +93,8 @@ Deep and mysterious splash screen at the loading stage
 - Lifecycle
 - Retrofit
 - Single activity approach
-- [View binding](https://developer.android.com/topic/libraries/view-binding)
-- Kotlin coroutines are used for asynchronous operations
+- View binding
+- Coroutines
 
 # Project stats
 <img src="https://github.com/K2D2021/K2DBinarySearch/blob/master/Gifs/K2DBinarySearchStatistics.jpg">
