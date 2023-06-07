@@ -1,5 +1,5 @@
 # K2DBinarySearch
-Mobile application to demonstrate how binary search works.
+Mobile app to demonstrate how binary search works.
 
 - [Description](#description)
 - [Technologies](#technologies)
